@@ -1,1 +1,747 @@
-<p>edwin works!</p>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediCare+ | Control de Medicación para Adultos Mayores</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+            color: #333;
+            background: #f8f9fa;
+        }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .app-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .app-icon {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .app-name {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .search-bar {
+            flex: 1;
+            max-width: 400px;
+            position: relative;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 0.8rem 1.2rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.9);
+            transition: all 0.3s ease;
+        }
+
+        .search-bar input:focus {
+            outline: none;
+            background: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            top: -250px;
+            right: -250px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+            bottom: -200px;
+            left: -200px;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(20px); }
+        }
+
+        .hero-content {
+            text-align: center;
+            color: white;
+            z-index: 1;
+            max-width: 900px;
+        }
+
+        .tagline {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.95;
+            animation: fadeIn 1s ease-out 0.3s both;
+        }
+
+        .description {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            line-height: 1.6;
+            animation: fadeIn 1s ease-out 0.6s both;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: white;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            animation: fadeIn 1s ease-out 0.9s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            background: #f8f9ff;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+            animation: fadeIn 1s ease-out 1.2s both;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .impact-section {
+            background: white;
+            padding: 5rem 2rem;
+        }
+
+        .impact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .impact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+
+        .impact-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .impact-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .impact-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            transition: transform 0.3s ease;
+        }
+
+        .impact-image:hover {
+            transform: scale(1.05);
+        }
+
+        .features {
+            background: #f8f9fa;
+            padding: 5rem 2rem;
+        }
+
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .feature-card {
+            padding: 2.5rem;
+            border-radius: 20px;
+            background: white;
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .feature-text {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .problem-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 5rem 2rem;
+        }
+
+        .problem-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .problem-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .problem-stat {
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .problem-number {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .team {
+            background: white;
+            padding: 5rem 2rem;
+        }
+
+        .team-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .team-member {
+            text-align: center;
+            padding: 2rem;
+            background: #f8f9fa;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+
+        .member-avatar {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+        }
+
+        .member-name {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #2d3748;
+            color: white;
+            padding: 3rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .footer-logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-app-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .footer-app-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: white;
+        }
+
+        .social-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+
+            .search-bar {
+                max-width: 100%;
+            }
+
+            .app-name {
+                font-size: 1.5rem;
+            }
+            
+            .tagline {
+                font-size: 1.3rem;
+            }
+            
+            .stats {
+                gap: 1.5rem;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .impact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .impact-images {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="header-content">
+            <div class="app-logo">
+                <div class="app-icon">💊</div>
+                <div class="app-name">MediCare+</div>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Buscar información...">
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="tagline">Tu Aliado en el Control de Medicación</h1>
+            <p class="description">
+                Una solución tecnológica innovadora para mejorar la adherencia al tratamiento 
+                en adultos mayores, reduciendo riesgos y mejorando su calidad de vida.
+            </p>
+            <a href="#features" class="cta-button">Descubre Más</a>
+            
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Olvidan dosis semanalmente</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">70%</span>
+                    <span class="stat-label">Suspenden tratamiento</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">98%</span>
+                    <span class="stat-label">Tienen interacciones</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- IMPACT SECTION (BODY) -->
+    <section class="impact-section">
+        <div class="impact-container">
+            <h2 class="section-title">Impacto desde Mi Perspectiva</h2>
+            <p class="section-subtitle">
+                Como miembro del equipo de desarrollo, veo este proyecto como una oportunidad única 
+                para generar un cambio significativo en la vida de miles de adultos mayores y sus familias.
+            </p>
+            
+            <div class="impact-content">
+                <div class="impact-text">
+                    <p style="margin-bottom: 1.5rem;">
+                        <strong>Mi visión personal:</strong> Este proyecto no es solo una aplicación, es una herramienta 
+                        que puede salvar vidas. He visto de cerca cómo el olvido de medicación afecta a nuestros 
+                        seres queridos, y estoy comprometido a crear una solución que realmente marque la diferencia.
+                    </p>
+                    <p style="margin-bottom: 1.5rem;">
+                        La tecnología debe ser inclusiva y accesible, especialmente para quienes más la necesitan. 
+                        Por eso, cada línea de código que escribo considera la experiencia del usuario final: 
+                        un adulto mayor que merece una vida digna y saludable.
+                    </p>
+                    <p>
+                        <strong>Mi compromiso:</strong> Desarrollar una interfaz tan intuitiva que cualquier persona, 
+                        sin importar su experiencia tecnológica, pueda usarla con confianza y autonomía.
+                    </p>
+                </div>
+                
+                <div class="impact-images">
+                    <div class="impact-image">👴</div>
+                    <div class="impact-image">❤️</div>
+                    <div class="impact-image">📱</div>
+                    <div class="impact-image">✅</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section id="features" class="features">
+        <div class="features-container">
+            <h2 class="section-title">Características Principales</h2>
+            <p class="section-subtitle">Tecnología diseñada para cuidar de quienes más queremos</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <span class="feature-icon">⏰</span>
+                    <h3 class="feature-title">Alertas Personalizadas</h3>
+                    <p class="feature-text">
+                        Recordatorios precisos con nombre, dosis y horario de cada medicamento. 
+                        Configurables según las necesidades del usuario.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <span class="feature-icon">📊</span>
+                    <h3 class="feature-title">Registro Digital</h3>
+                    <p class="feature-text">
+                        Seguimiento automático de dosis administradas y omitidas, con reportes 
+                        exportables para médicos y cuidadores.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <span class="feature-icon">👨‍👩‍👧</span>
+                    <h3 class="feature-title">Conexión Familiar</h3>
+                    <p class="feature-text">
+                        Módulo especial para que familiares y cuidadores supervisen el tratamiento 
+                        y reciban notificaciones importantes.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <span class="feature-icon">🔒</span>
+                    <h3 class="feature-title">Seguridad Total</h3>
+                    <p class="feature-text">
+                        Cifrado de extremo a extremo y cumplimiento con normativas de protección 
+                        de datos personales y médicos.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <span class="feature-icon">♿</span>
+                    <h3 class="feature-title">Accesibilidad</h3>
+                    <p class="feature-text">
+                        Interfaz intuitiva con tipografías grandes, alto contraste y modo de 
+                        texto a voz para usuarios con dificultades visuales.
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <span class="feature-icon">📱</span>
+                    <h3 class="feature-title">Fácil de Usar</h3>
+                    <p class="feature-text">
+                        Diseño pensado específicamente para adultos mayores, con botones grandes 
+                        e instrucciones claras paso a paso.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROBLEM SECTION -->
+    <section class="problem-section">
+        <div class="problem-content">
+            <h2 class="section-title" style="color: white; -webkit-text-fill-color: white;">El Problema que Resolvemos</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 3rem; opacity: 0.95;">
+                La polifarmacia y el olvido de medicación son problemas graves que afectan 
+                la salud de millones de adultos mayores en Latinoamérica.
+            </p>
+            
+            <div class="problem-stats">
+                <div class="problem-stat">
+                    <div class="problem-number">34.8%</div>
+                    <p>Adultos mayores en polifarmacia (Bogotá)</p>
+                </div>
+                <div class="problem-stat">
+                    <div class="problem-number">10%</div>
+                    <p>Consultas en urgencias por reacciones adversas</p>
+                </div>
+                <div class="problem-stat">
+                    <div class="problem-number">6.1</div>
+                    <p>Promedio de medicamentos por persona</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEAM -->
+    <section class="team">
+        <div class="team-container">
+            <h2 class="section-title">Nuestro Equipo</h2>
+            <p class="section-subtitle">Fundación Universitaria Católica Lumen Gentium</p>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-avatar">👨‍💻</div>
+                    <div class="member-name">Cesar Andrés Peláez</div>
+                </div>
+                <div class="team-member">
+                    <div class="member-avatar">👨‍💻</div>
+                    <div class="member-name">Edwin Camilo Pipicano</div>
+                </div>
+                <div class="team-member">
+                    <div class="member-avatar">👨‍💻</div>
+                    <div class="member-name">Brahian Styven Martinez</div>
+                </div>
+                <div class="team-member">
+                    <div class="member-avatar">👨‍💻</div>
+                    <div class="member-name">Esteban Giraldo</div>
+                </div>
+                <div class="team-member">
+                    <div class="member-avatar">👨‍💻</div>
+                    <div class="member-name">Alejandro Morcillo</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-logo-container">
+                    <div class="footer-app-icon">💊</div>
+                    <div class="footer-app-name">MediCare+</div>
+                </div>
+                <p>Tecnología al servicio del bienestar de nuestros adultos mayores.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link">📘</a>
+                    <a href="#" class="social-link">📷</a>
+                    <a href="#" class="social-link">🐦</a>
+                    <a href="#" class="social-link">💼</a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <p>📧 info@medicareplus.com</p>
+                <p>📱 +57 300 123 4567</p>
+                <p>📍 Cali, Valle del Cauca, Colombia</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Institución</h3>
+                <p>Fundación Universitaria Católica Lumen Gentium</p>
+                <p>Tecnología en Desarrollo de Software</p>
+                <p>🌐 www.unicatolica.edu.co</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 MediCare+ | Todos los derechos reservados</p>
+            <p>Desarrollado con ❤️ por estudiantes de la fundacion Universtaria Lumen Gentium</p>
+        </div>
+    </footer>
+</body>
+</html>
