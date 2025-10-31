@@ -1,1 +1,154 @@
-<p>bryan works!</p>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Medical Health</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    header {
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    .hero-image {
+      border-radius: 10px;
+      object-fit: cover;
+      width: 100%;
+      height: 350px;
+    }
+    .card img {
+      border-top-left-radius: 0.5rem;
+      border-top-right-radius: 0.5rem;
+      height: 180px;
+      object-fit: cover;
+    }
+    footer .social-icons a {
+      color: white;
+      margin: 0 10px;
+      font-size: 1.5rem;
+      transition: color 0.3s;
+    }
+    footer .social-icons a:hover {
+      color: #0dcaf0; /* color celeste al pasar el mouse */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="bg-primary text-white py-3">
+    <div class="container d-flex flex-wrap justify-content-between align-items-center">
+
+      <!-- Logo e ícono -->
+      <div class="d-flex align-items-center">
+        <i class="bi bi-heart-pulse-fill fs-3 me-2"></i>
+        <h1 class="h3 mb-0">Medical Health</h1>
+      </div>
+
+      <!-- Navegación + Búsqueda -->
+      <nav class="d-flex align-items-center flex-wrap justify-content-end">
+        <ul class="nav me-3">
+          <li class="nav-item"><a class="nav-link text-white" href="#">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="#">Servicios</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="#">Doctores</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="#">Contacto</a></li>
+        </ul>
+
+        <!-- Barra de búsqueda -->
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Buscar..." aria-label="Buscar">
+          <button class="btn btn-light" type="submit"><i class="bi bi-search"></i></button>
+        </form>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Body -->
+  <main class="container my-5">
+
+
+
+    <div class="row">
+      <!-- Texto descriptivo -->
+      <div class="col-md-8">
+        <h2>Bienvenido a Medical Health</h2>
+        <p>
+          En <strong>Medical Health</strong> creemos que la salud es el pilar fundamental del bienestar humano.
+          Nuestro compromiso es ofrecer atención médica integral basada en la evidencia científica más reciente,
+          con un enfoque humano, empático y personalizado para cada paciente.
+        </p>
+
+        <p>
+          Contamos con un equipo de profesionales altamente capacitados en diversas especialidades:
+          medicina general, cardiología, pediatría, ginecología y medicina preventiva.
+          Utilizamos tecnología avanzada para el diagnóstico, tratamiento y seguimiento de nuestros pacientes,
+          garantizando calidad, precisión y seguridad en cada procedimiento.
+        </p>
+
+        <p>
+          Nuestra misión es cuidar tu salud en todas las etapas de la vida,
+          promoviendo la prevención, el diagnóstico temprano y los hábitos saludables.
+          En Medical Health, cada consulta es una oportunidad para mejorar tu bienestar.
+        </p>
+
+        <button class="btn btn-primary mt-3">Conoce nuestros servicios</button>
+      </div>
+
+      <!-- Columna lateral con tarjetas -->
+      <div class="col-md-4">
+        <div class="card shadow-sm mb-4">
+          <img src="https://tse4.mm.bing.net/th/id/OIP.XCO85mpxpH0ktnR4Elc_JAHaNK?rs=1&pid=ImgDetMain&o=7&rm=3" 
+               alt="Noticias médicas">
+          <div class="card-body">
+            <h5 class="card-title">Noticias de Salud</h5>
+            <p class="card-text">Infórmate sobre los últimos avances médicos, vacunas y tratamientos innovadores.</p>
+            <a href="#" class="btn btn-outline-primary">Leer más</a>
+          </div>
+        </div>
+
+        <div class="card shadow-sm">
+          <img src="https://th.bing.com/th/id/R.8a56f5739016972e26e9164669dec2db?rik=Kgp7zrg2Q7CQZw&riu=http%3a%2f%2f1.bp.blogspot.com%2f-CWAIRCpZ8Bw%2fUa09XpLDTQI%2fAAAAAAAAAIE%2f_7XRmLA7208%2fs1600%2flogo_mas_slaud.png&ehk=r5i0M3e2wH2nSD31KnnVuyoaBUmZegTVX7eaTcWvcB0%3d&risl=&pid=ImgRaw&r=0" 
+               alt="Consejo saludable">
+          <div class="card-body">
+            <h5 class="card-title">Consejo del Día</h5>
+            <p class="card-text">Mantén una dieta equilibrada, haz ejercicio regularmente y realiza tus chequeos médicos cada seis meses.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white text-center py-4">
+    <div class="container">
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-center">
+
+        <!-- Logo -->
+        <div class="mb-3 mb-md-0 d-flex align-items-center">
+          <i class="bi bi-heart-pulse-fill fs-3 text-danger me-2"></i>
+          <span class="h5 mb-0">Medical Health</span>
+        </div>
+
+        <!-- Redes sociales -->
+        <div class="social-icons">
+          <a href="#" title="MedBook"><i class="bi bi-facebook"></i></a>
+          <a href="#" title="MediGram"><i class="bi bi-instagram"></i></a>
+          <a href="#" title="DocX"><i class="bi bi-twitter-x"></i></a>
+          <a href="#" title="HealthIn"><i class="bi bi-linkedin"></i></a>
+        </div>
+      </div>
+
+      <hr class="border-secondary my-3">
+
+      <p class="mb-0">&copy; 2025 Medical Health. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Open bryan.html",
+            "file": "c:\\Users\\SALA 4\\Desktop\\Actividad\\Actividad_hoy30\\login_project\\src\\app\\component\\bryan\\bryan.html"
+        }
+    ]
+}
